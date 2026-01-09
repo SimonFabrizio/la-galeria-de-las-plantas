@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Galería de las Plantas</title>
+    
+    <meta name="description" content="Vivero boutique en Berisso. Plantas de interior, macetas y herramientas.">
+    <link rel="icon" type="image/png" href="logogaleria.png">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo" onclick="navTo('home')">
+            <img src="logogaleria.png" alt="Logo" class="logo-img">
+            <span class="logo-text">La Galería de las Plantas</span>
+        </div>
+        
+        <div class="nav-links" id="navLinks">
+            <button id="btn-home" class="nav-item active" onclick="navTo('home')">Inicio</button>
+            <button id="btn-catalog" class="nav-item" onclick="navTo('catalog')">Catálogo</button>
+            <button id="btn-care" class="nav-item" onclick="navTo('care')">Cuidados</button>
+        </div>
+
+        <div class="nav-icons">
+            <div class="theme-btn" onclick="toggleTheme()" title="Cambiar Tema">
+                <span id="themeIcon" class="material-icons">dark_mode</span>
+            </div>
+            <div class="cart-btn" onclick="toggleCart()">
+                <span class="material-icons">shopping_bag</span>
+                <span id="cartCount" class="badge" style="opacity:0">0</span>
+            </div>
+            <div class="menu-toggle" onclick="toggleMobileMenu()">
+                <span class="material-icons">menu</span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-text">
+                <h1 class="brand-title">Naturaleza <br><i>llena de Sol</i></h1>
+                <p class="brand-subtitle">
+                    Transforma tu hogar en un oasis vibrante. Plantas seleccionadas con dedicación en Berisso.
+                </p>
+                
+                <div class="hero-actions">
+                    <button class="btn-explore" onclick="navTo('catalog')">Ver Catálogo</button>
+                    <a href="https://www.instagram.com/lagaleriadelasplantas" target="_blank" class="btn-social">
+                        <span class="material-icons" style="font-size: 1.2rem;">photo_camera</span>
+                        Instagram
+                    </a>
+                </div>
+
+                <a href="https://maps.google.com" target="_blank" class="hero-location-btn">
+                    <span class="material-icons location-icon">location_on</span>
+                    <div>
+                        <strong>Perseverancia 4470</strong>
+                        <p>Berisso, Buenos Aires</p>
+                    </div>
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.postimg.cc/ZYQwGKNy/galeria.png" alt="Vivero La Galería">
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Nuestra Colección</h2>
+            
+            <div class="filter-container">
+                <div class="search-box">
+                    <input type="text" id="searchPlant" placeholder="Buscar planta..." oninput="applyFilters()">
+                </div>
+
+                <div class="sort-box">
+                    <select id="sortSelect" onchange="applyFilters()">
+                        <option value="relevant">Ordenar: Relevancia</option>
+                        <option value="price-asc">Menor Precio</option>
+                        <option value="price-desc">Mayor Precio</option>
+                        <option value="alpha">Nombre (A-Z)</option>
+                    </select>
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">Todo</button>
+                    <button class="filter-btn" data-category="Planta">Plantas</button>
+                    <button class="filter-btn" data-category="Maceta">Macetas</button>
+                    <button class="filter-btn" data-category="Tierra">Sustratos</button>
+                    <button class="filter-btn" data-category="Fertilizante">Fertilizantes</button>
+                    <button class="filter-btn" data-category="Herramienta">Herramientas</button>
+                </div>
+            </div>
+
+            <div id="plantsGrid" class="grid"></div>
+        </div>
+    </section>
+
+    <section id="care" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Manual de Cuidados</h2>
+            
+            <div class="care-layout">
+                <div class="accordion-container" id="careList">
+                    </div>
+                <div class="care-image-box">
+                    <img src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=800&q=80" alt="Cuidados">
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align:center; font-family:var(--font-heading); color:var(--text-primary); margin-bottom: 2rem; font-size:1.8rem;">
+                    ¿Problemas con tu planta? 🚑
+                </h3>
+                <div id="plantDoctor" class="doctor-grid">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>La Galería</h3>
+                <p>Tu refugio botánico en Berisso. Calidad, diseño y vida para tu hogar.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a onclick="navTo('home')">Inicio</a>
+                <a onclick="navTo('catalog')">Catálogo</a>
+                <a onclick="navTo('care')">Cuidados</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📍 Perseverancia 4470, Berisso</p>
+                <p>📱 WhatsApp: +5492216187527</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 La Galería de las Plantas.</p>
+        </div>
+    </footer>
+
+    <div id="cartOverlay" class="overlay" onclick="toggleCart()"></div>
+    <aside id="cartSidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Tu Pedido</h3>
+            <span class="material-icons close-btn" onclick="toggleCart()">close</span>
+        </div>
+        <div id="cartItems" class="sidebar-body"></div>
+        <div class="sidebar-footer">
+            <div class="total-row"><span>Total</span><span id="cartTotal">$0.00</span></div>
+            <button onclick="checkout()" class="btn-checkout">Enviar a WhatsApp</button>
+        </div>
+    </aside>
+
+    <div id="productModal" class="overlay">
+        <div class="modal-content">
+            <span class="material-icons close-modal-btn" onclick="closeModal()">close</span>
+            <div style="text-align:center;">
+                <img id="modalImg" src="" style="height: 200px; object-fit: contain; margin-bottom: 15px;">
+                <h2 id="modalTitle" style="font-family: var(--font-heading); color: var(--text-primary);"></h2>
+                <h3 id="modalPrice" style="color: var(--green-detail);"></h3>
+                <p id="modalDesc" style="color: var(--text-secondary); margin: 15px 0;"></p>
+                <div id="stockIndicator" style="margin-bottom:15px; font-weight:bold;"></div>
+                <button id="modalAddBtn" class="btn-add">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastBox"></div>
+    
+    <a href="https://wa.me/5492216187527" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35" height="35">
+</a>
+
+    <script src="script.js"></script>
+</body>
+</html>
